@@ -13,7 +13,8 @@
 // console.log(divRoot);
 
 import { createRoot } from 'react-dom/client';
-import PrimeraApp from './PrimeraApp';
+// import PrimeraApp from './PrimeraApp';
+import CounterApp from './CounterApp';
 import './index.css'
 
 
@@ -23,5 +24,6 @@ const saludo = <h1> Hola Micho</h1>
 const divRoot = document.querySelector('#root');
 const root = createRoot(divRoot);
 
-root.render( < PrimeraApp saludo="Hey Arnold!" />);
+// root.render( < PrimeraApp saludo="Hey Arnold!" />);
+root.render( < CounterApp value={21} />);
 
