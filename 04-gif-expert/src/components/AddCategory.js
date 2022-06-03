@@ -4,8 +4,6 @@
 import React, {useState } from 'react';
 import {PropTypes} from 'prop-types';
 
-
-
 const AddCategory = ( { setCategories}) => {
 
     const [inputValue, setInputValue] = useState('');
@@ -18,7 +16,7 @@ const AddCategory = ( { setCategories}) => {
         e.preventDefault();
 
         if ( inputValue.trim().length > 2 ) {
-            setCategories( cats => [ ...cats , inputValue ]);
+            setCategories( cats => [ inputValue, ...cats  ]);
             setInputValue('');    
         }
            
