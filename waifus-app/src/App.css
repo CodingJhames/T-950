@@ -1,0 +1,16 @@
+
+
+body {
+  padding: 70px;
+}
+
+#waifu {
+  height: 600px;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
