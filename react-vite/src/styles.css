@@ -1,0 +1,12 @@
+
+
+body{
+    background-color: darkgray;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 70px;
+}
+
+button {
+    padding: 5px;
+    font-size: 1.3rem;
+}
