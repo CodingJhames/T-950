@@ -27,7 +27,19 @@ describe('Pruebas en FirstApp', () => {
 
      test('Debe de mostrar el subtítulo eviador por props', () => { 
 
-        
+        const title = "Hola, soy Chepito";
+        const subTitle = "soy un sbutitulo";
+        // const {getByText } = render( 
+        const {getAllByText } = render( 
+        < FirstApp  
+            title={title}
+            subTitle={subTitle}
+
+            /> );
+        // expect( getByText( subTitle ) ).toBeTruthy();
+
+        expect( getAllByText( subTitle ).length ).toBe(2);
+
 
       })    
 

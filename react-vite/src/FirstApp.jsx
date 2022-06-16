@@ -11,6 +11,7 @@ export const FirstApp = ({ title, subTitle, name }) => {
       <div data-testid="test-title"> { title } </div>
       {/* <code>{ JSON.stringify( newMessage ) }</code> */}
       <p>{ subTitle }</p>
+      <p>{ subTitle }</p>
       <p>{ name }</p>
     </>
   )
