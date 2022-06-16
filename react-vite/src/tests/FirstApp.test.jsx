@@ -40,7 +40,6 @@ describe('Pruebas en FirstApp', () => {
 
         expect( getAllByText( subTitle ).length ).toBe(2);
 
-
       })    
 
 
