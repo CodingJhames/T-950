@@ -10,19 +10,20 @@ const GifExpertApp = () => {
     const [categories, setCategories] = useState(['Demon Slayer', 'T-800']);
     
 
-    const onAddCategory = ( ) => {
-      
+    const onAddCategory = ( newCategory ) => {
+        
+        // console.log( newCategory );
+
         setCategories([
-            ...categories,
-            'kiss'
+            
+            newCategory,
+            ...categories
         ])
 
         /* segunda forma de agregar elementos al arreglo de useState
             setCategories( cat => [..categories, 'Kiss'] );
         */
     }
-
-    
 
     return (
     <>
@@ -31,7 +32,11 @@ const GifExpertApp = () => {
         <hr></hr>
         <br></br>
 
-        <AddCategory setCategories={setCategories}/>
+        <AddCategory 
+            // setCategories={setCategories}
+            onNewCategory={ event => onAddCategory( event ) }
+        
+        />
         
         {/* <button onClick={ onAddCategory } >Agregar</button> */}
 
