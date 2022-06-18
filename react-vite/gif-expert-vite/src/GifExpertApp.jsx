@@ -8,7 +8,7 @@ import GifGrid from './components/GifGrid';
 const GifExpertApp = () => {
 
 
-    const [categories, setCategories] = useState(['Demon Slayer', 'T-800']);
+    const [categories, setCategories] = useState(['Demon Slayer']);
     
 
     const onAddCategory = ( newCategory ) => {
