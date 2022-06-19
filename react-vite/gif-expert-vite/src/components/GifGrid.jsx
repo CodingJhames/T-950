@@ -25,6 +25,14 @@ import GifItem from "./GifItem";
 
         <h3>{category}</h3>
 
+        {
+          isLoading ? 
+           (<h2>Loading... Nikka</h2>)
+          : null
+        }
+
+        
+
         
           <div className="card-grid">
 
