@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
-import { getGifs } from "../helpers/getGifs"
+// import { getGifs } from "../helpers/getGifs;"
+import { useFecthGifs } from "../hooks/useFecthGifs";
 import GifItem from "./GifItem";
 
     
   
     export const GifGrid = ( {category} ) => {
         
-      const [images, setImages] = useState([]);
 
-      useEffect( () => {
-        getGifs( category )
-          .then( newImages => setImages( newImages) );
-      }, [] )
+       const { images, isLoading } = useFecthGifs( category );
+
+       console.log( images, isLoading );
+
+      // const [images, setImages] = useState([]);
+
+      // useEffect( () => {
+      //   getGifs( category )
+      //     .then( newImages => setImages( newImages) );
+      // }, [] )
 
       
       return (
