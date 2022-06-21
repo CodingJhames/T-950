@@ -10,7 +10,7 @@ import GifItem from "./GifItem";
 
        const { images, isLoading } = useFecthGifs( category );
 
-       console.log( images, isLoading );
+      //  console.log( images, isLoading );
 
       // const [images, setImages] = useState([]);
 
@@ -27,20 +27,17 @@ import GifItem from "./GifItem";
 
         {
           isLoading ? 
-           (<h2>Loading... Nikka</h2>)
+           (<h2>Loading...</h2>)
           : null
         }
 
-        
-
-        
           <div className="card-grid">
 
             { images.map( (image) => (
 
               < GifItem 
-                key={ image.id }
-                { ...image } 
+              key={ image.id }
+              { ...image } 
               />
               
             ) )
