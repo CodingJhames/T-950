@@ -9,7 +9,8 @@ describe('Pruebas en GifItem', () => {
 
     test('Debe de hacer match con el snapshot', () => { 
 
-       render( < GifItem title={title} url={url} />)
+       const {container} = render( < GifItem title={title} url={url} />)
+       expect( container ).toMatchSnapshot();
 
      }) 
 
