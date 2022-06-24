@@ -12,6 +12,7 @@ export const AddCategory = ( {onNewCategory } ) => {
     }
 
     const onSubmit = (e) => {
+        // console.log('Hola Parchita desde onSubmit');
         e.preventDefault();
         if( inputValue.trim().length <= 1 ) return;
         // setCategories( categories => [ inputValue,...categories ] );
@@ -22,7 +23,7 @@ export const AddCategory = ( {onNewCategory } ) => {
 
   return (
 
-    <form onSubmit={ e => onSubmit(e)} >
+    <form onSubmit={ e => onSubmit(e)} aria-label="form" >
 
         <input 
             type="text"
@@ -39,7 +40,7 @@ export const AddCategory = ( {onNewCategory } ) => {
 
 AddCategory.propTypes = {
 
-    onNewCategory: PropTypes.func.isrequired,
+    onNewCategory: PropTypes.func.isRequired,
 }
 
 export default AddCategory
