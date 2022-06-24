@@ -18,3 +18,5 @@
     return gifs;
 
 }
+
+export default getGifs();
