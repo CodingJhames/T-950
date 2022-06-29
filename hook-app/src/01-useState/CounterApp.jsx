@@ -10,6 +10,7 @@ export const CounterApp = () => {
     });
 
     const { counter1, counter2, counter3 } = counter;
+    
   return (
     <>
         <h1>Counter1: {counter1}</h1>
@@ -20,7 +21,7 @@ export const CounterApp = () => {
         <button className='btn btn-primary' onClick={ () => setCounter( {
             ...counter,
             counter1: counter1 + 1
-            
+
         }) }>+1</button>
 
     
