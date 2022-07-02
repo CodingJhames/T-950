@@ -54,8 +54,10 @@ const SimpleForm = () => {
         onChange={onInputChange}/>
 
         {
-            (username == 'Username') && <Message />
+            (username == 'Chepitox') && <Message />
         }
+
+        
     
     </>
   )
