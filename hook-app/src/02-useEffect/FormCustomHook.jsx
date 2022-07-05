@@ -22,7 +22,7 @@ const FormCustomHook = () => {
     //     })
     // }
 
-    const { formState, onInputChange,username, password, email  } = useForm(
+    const { formState, onInputChange, onResetForm, username, password, email }  = useForm(
         {
         username:'',
         email: '',
@@ -43,6 +43,7 @@ const FormCustomHook = () => {
     // useEffect(() => {
     //     // console.log('Email changed!');
     // }, [email]);
+
     
   return (
     <>
@@ -73,6 +74,7 @@ const FormCustomHook = () => {
         value={ password }
         onChange={onInputChange}/>
 
+        <button onClick={onResetForm} className='btn btn-primary mt-3'>Reset</button>
        
     </>
   )
