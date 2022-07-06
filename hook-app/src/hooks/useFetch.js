@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 
 
-
 const useFetch = ( url ) => {
 
     const [state, setState] = useState({
@@ -10,9 +9,6 @@ const useFetch = ( url ) => {
         hasError:null,
     })
 
-
-
-  
     const getFetch = async() => {
 
         setState( {
@@ -32,7 +28,6 @@ const useFetch = ( url ) => {
 
     }
 
-
     useEffect(() => {
         getFetch();
     }, [url])
@@ -43,9 +38,6 @@ const useFetch = ( url ) => {
         isLoading:  state.isLoading,
         hasError:   state.hasError,
     }
-
-    
-
 
 }
 
