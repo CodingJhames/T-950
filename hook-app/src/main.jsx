@@ -5,6 +5,11 @@ import CounterWithCustomHook from './01-useState/CounterWithCustomHook';
 import FormCustomHook from './02-useEffect/FormCustomHook';
 import SimpleForm from './02-useEffect/SimpleForm';
 import MultipleCustomHooks from './03-examples/MultipleCustomHooks';
+import FocusScreeen from './04-useRef/FocusScreeen';
+import Layout from './05-useLayoutEffect/Layout';
+import CallBackHook from './06-memos/CallBackHook';
+import MemoHook from './06-memos/MemoHook';
+import Memorize from './06-memos/Memorize';
 import { HooksApp } from './HooksApp';
 
 import './index.css'
@@ -12,4 +17,4 @@ import './index.css'
 
 const container = document.getElementById('root');
 const root = createRoot( container );
-root.render(  < MultipleCustomHooks /> );
+root.render(  < CallBackHook /> );
