@@ -11,10 +11,11 @@ import CallBackHook from './06-memos/CallBackHook';
 import MemoHook from './06-memos/MemoHook';
 import Memorize from './06-memos/Memorize';
 import { HooksApp } from './HooksApp';
+import './08-useReducer/intro-reducer';
 
 import './index.css'
 
 
-const container = document.getElementById('root');
-const root = createRoot( container );
-root.render(  < CallBackHook /> );
+// const container = document.getElementById('root');
+// const root = createRoot( container );
+// root.render(  < Padre /> );
