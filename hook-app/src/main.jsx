@@ -14,8 +14,9 @@ import { HooksApp } from './HooksApp';
 import './08-useReducer/intro-reducer';
 
 import './index.css'
+import TodoApp from './08-useReducer/TodoApp';
 
 
-// const container = document.getElementById('root');
-// const root = createRoot( container );
-// root.render(  < Padre /> );
+const container = document.getElementById('root');
+const root = createRoot( container );
+root.render(  < TodoApp /> );
