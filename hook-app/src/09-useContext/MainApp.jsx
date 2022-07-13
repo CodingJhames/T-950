@@ -9,7 +9,7 @@ const MainApp = () => {
 
   return (
     <>
-        <h1>MainApp</h1>
+        {/* <h1>MainApp</h1> */}
             < NavBar />
         <hr></hr>
 
