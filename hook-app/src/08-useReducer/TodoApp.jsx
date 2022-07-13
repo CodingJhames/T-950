@@ -1,10 +1,17 @@
-import { useEffect } from "react";
-import { useReducer } from "react";
+// import { useEffect } from "react";
+// import { useReducer } from "react";
+import useTodos from "../hooks/useTodos";
 import TodoAdd from "./TodoAdd";
 
 
 import { TodoList } from "./TodoList";
-import { todoReducer } from "./todoReducer";
+// import { todoReducer } from "./todoReducer";
+
+
+/* hacer el custom hook useTodo, el cual debería de exponer: todos, handleNewTodo, handleDeleteTodo, handleToggleTodo    */
+
+
+
 
 // const initialState = [
 //     {
@@ -19,61 +26,15 @@ import { todoReducer } from "./todoReducer";
 //     }
 // ]
 
-const initialState = []
-
-const init = () => {
-    return JSON.parse( localStorage.getItem('todos')) || [];
-}
 
 const TodoApp = () => {
 
-    const [todos, dispatch ] = useReducer( todoReducer, initialState, init );
-
-    useEffect(() => {
-        
-        localStorage.setItem( 'todos', JSON.stringify( todos ) );
-      
-    }, [todos])
-    
-
-    const handleNewTodo = ( todo ) => {
-        // console.log({ todo });
-
-        const action = {
-            type: '[TODO] Add Todo',
-            payload: todo
-        }
-             
-        dispatch( action );
-    }
-
-    const handleDeleteTodo = ( id ) => {
-
-        // console.log({ id  });
-
-        dispatch({
-            type: '[TODO] Remove Todo',
-            payload: id
-        });
-
-    }
-
-    const handleToggleTodo = ( id ) => {
-
-        console.log({ id  });
-
-        dispatch({
-            type: '[TODO] Toggle Todo',
-            payload: id
-        });
-
-    }
-
-
+    const {todos,todosCount,pendingTodosCount, handleNewTodo, handleDeleteTodo, handleToggleTodo } = useTodos();  
+   
   return (
 
     <>
-        <h1> ToDoApp: <small>pendientes: 2 </small></h1>
+        <h1> ToDoApp: {todosCount} <small>pendientes: { pendingTodosCount} </small></h1>
         <hr></hr>
 
         <div className="row">

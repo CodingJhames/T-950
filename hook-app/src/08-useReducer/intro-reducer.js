@@ -27,14 +27,10 @@ const newTodo = {
 const addTodoAction = {
     type: '[TODO] add todo',
     payload: newTodo,
-
-
 }
 
 
 todos = todoReducer( todos, addTodoAction );
 
 console.log( {state: todos } );
-
-
 
