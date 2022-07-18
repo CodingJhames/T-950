@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import TodoItem from "../../src/08-useReducer/TodoItem";
 
 describe('Pruebas en TodoItem', () => { 
@@ -6,7 +6,7 @@ describe('Pruebas en TodoItem', () => {
     const todo = {
         id:1,
         description: 'Piedra del Alma',
-        donde: false
+        done: false
     }
 
     const onDeleteTodoMock = jest.fn();
@@ -35,5 +35,56 @@ describe('Pruebas en TodoItem', () => {
         // ! aquí toca tener en cuenta el detalle del espacio " " que se hace en el
         // ! 'align-self-center' cuando ya se hace la aserción, sino sale error.
     })
+
+    test('Debe de mostrar el Todo completado', () => { 
+
+        todo.done = true;
+        
+        render( 
+            <TodoItem 
+            todo={ todo } 
+            onToggleTodo={ onToggleTodoMock  } 
+            onDeleteTodo={ onDeleteTodoMock } />  
+        );
+
+        const spanElement = screen.getByLabelText('span');
+        expect( spanElement.className ).toContain('text-decoration-line-through');
+
+    });
+
+    test('el span debe de llamar el toggleTodo cuando se hace onClick', () => { 
+
+        render( 
+            <TodoItem 
+            todo={ todo } 
+            onToggleTodo={ onToggleTodoMock  } 
+            onDeleteTodo={ onDeleteTodoMock } />  
+        );
+
+        
+        const spanElement = screen.getByLabelText('span');
+        fireEvent.click( spanElement );
+        
+        expect( onToggleTodoMock ).toHaveBeenCalledWith( todo.id );
+
+     });
+
+     test('button debe de llamar el deleteTodo', () => { 
+
+        render( 
+            <TodoItem 
+            todo={ todo } 
+            onToggleTodo={ onToggleTodoMock  } 
+            onDeleteTodo={ onDeleteTodoMock } />  
+        );
+
+        
+        const btnElement = screen.getByRole('button');
+        fireEvent.click( btnElement );
+        
+        expect( onDeleteTodoMock ).toHaveBeenCalledWith( todo.id );
+
+     })
+
 
 })
