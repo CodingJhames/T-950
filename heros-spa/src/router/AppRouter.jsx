@@ -1,13 +1,14 @@
 
 import React from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom';
 // import { DcPage, MarvelPage } from '../heroes';
 // import { LoginPage } from '../auth'
 // import { Navbar } from '../ui'
 import LoginPage from '../auth/pages/LoginPage'
-import DcPage from '../heroes/pages/DcPage'
-import MarvelPage from '../heroes/pages/MarvelPage'
-import { Navbar } from '../ui/components/Navbar'
+// import DcPage from '../heroes/pages/DcPage'
+// import MarvelPage from '../heroes/pages/MarvelPage'
+import HeroesRoutes from '../heroes/routes/HeroesRoutes'
+// import { Navbar } from '../ui/components/Navbar'
 
 // ! intenté nuevamente con lo de archivos de barril, sin embargo
 // ! me dió error en el componente Marvelpage.
@@ -15,15 +16,10 @@ import { Navbar } from '../ui/components/Navbar'
 const AppRouter = () => {
     return (
         
-        <>
-        
-            <Navbar />
-            
+        <>  
             <Routes>
-                <Route path="marvel" element={ <MarvelPage />  } />
-                <Route path="dc" element={<DcPage/>} />
                 <Route path="login" element={<LoginPage/>} />
-                <Route path="/" element={<Navigate to="/marvel" /> } />
+                <Route path="/*" element={<HeroesRoutes/>} />
             </Routes>
         </>
 
