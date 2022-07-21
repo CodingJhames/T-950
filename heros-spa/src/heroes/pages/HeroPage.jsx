@@ -33,7 +33,7 @@ const HeroPage = () => {
         <img
         src={`/assets/heroes/${id }.jpg`}
         alt={ hero.superhero }
-        className="img-thumbnail"></img>
+        className="img-thumbnail animate__animated animate__fadeInLeft"></img>
       </div>
 
       <div className="col-8">
