@@ -13,13 +13,18 @@ const SearchPage = () => {
   // console.log( {query} );
   const heroes = getHeroByName( q );
 
+  const showSearch = ( q.length === 0 );
+  const showError  = ( q.length > 0 ) && heroes.length === 0;
+
+
+
   const { searchText, onInputChange } = useForm( {
     searchText: q
   });
 
   const onSearchSubmit = ( e ) => {
     e.preventDefault();
-    if ( searchText.trim().length <= 1 ) return;
+    // if ( searchText.trim().length <= 1 ) return;
     // console.log( { searchText});
 
     navigate(`?q=${ searchText}`);
@@ -58,11 +63,11 @@ const SearchPage = () => {
               <h4>Results</h4>
               <hr></hr>
             
-            <div className="alert alert-primary">
+            <div className="alert alert-primary" style={ { display: showSearch ? '' : 'none'}}>
               Search a Hero
             </div>
 
-            <div className="alert alert-danger">
+            <div className="alert alert-danger" style={ {  display: showError ? '' : 'none' }}  >
               No Results for <b>{ q }</b>
             </div>
 
