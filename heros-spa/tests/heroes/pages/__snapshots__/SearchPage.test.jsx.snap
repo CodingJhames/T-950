@@ -45,6 +45,7 @@ exports[`Pruebas en SearchPage Debe de mostrarse correctamente con valores por d
         Search a Hero
       </div>
       <div
+        aria-label="alert-danger"
         class="alert alert-danger"
         style="display: none;"
       >

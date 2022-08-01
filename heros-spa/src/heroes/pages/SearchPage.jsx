@@ -67,7 +67,7 @@ const SearchPage = () => {
               Search a Hero
             </div>
 
-            <div className="alert alert-danger" style={ {  display: showError ? '' : 'none' }}  >
+            <div aria-label="alert-danger" className="alert alert-danger" style={ {  display: showError ? '' : 'none' }}  >
               No Results for <b>{ q }</b>
             </div>
 
