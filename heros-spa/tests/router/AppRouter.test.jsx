@@ -33,7 +33,7 @@ describe('Pruebas en AppRouter', () => {
                 logged: true,
                 user: {
                     id: 'ABC',
-                    name: 'Parchitawp'
+                    name: 'Parchita'
                 }
             }
     
