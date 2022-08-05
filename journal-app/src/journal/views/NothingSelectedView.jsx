@@ -2,8 +2,6 @@ import { Grid, Typography } from "@mui/material"
 import { StarOutline } from "@mui/icons-material"
 
 
-
-
 export const NothingSelectedView = () => {
   return (
     
