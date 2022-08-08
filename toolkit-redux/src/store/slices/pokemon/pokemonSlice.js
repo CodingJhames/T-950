@@ -10,7 +10,7 @@ export const pokemonSlice = createSlice({
         startLoadingPokemons: (state, /* action */ ) => {
             state.isLoading = true;
         },
-        setPokemons: ( state, action) => {
+        setPokemons: ( state , action) => {
             console.log(action);
         }
     }
