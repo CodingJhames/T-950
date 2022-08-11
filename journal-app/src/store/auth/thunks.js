@@ -1,5 +1,5 @@
 import { signInWithGoogle } from "../../firebase/providers";
-import { chekingCredentials } from "./index";
+import { chekingCredentials, logout, login } from "./index";
 
 
 
@@ -19,7 +19,11 @@ export const startGoogleSignIn = () => {
         dispatch(  chekingCredentials() );
 
         const result = await signInWithGoogle();
-        console.log({ result });
+        // console.log({ result });
+
+        if ( !result.ok ) return  dispatch( logout( result.errorMessage ) );
+
+        dispatch( login( result ) );
         
 
     }
