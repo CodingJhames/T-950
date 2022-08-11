@@ -4,11 +4,12 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hooks/useForm';
+import { useState } from 'react';
 
 const formData = {
-  email: 'james@google.com',
-  password: '123456',
-  displayName: 'Jhames Mejía'
+  email: '',
+  password: '',
+  displayName: '',
 }
 
 const formValidations = {
@@ -19,15 +20,19 @@ const formValidations = {
 
 export const RegisterPage = () => {
 
+  const [formSubmitted, setFormSubmitted] = useState(false)
+
+
   const { 
     displayName, email, password, onInputChange, formState,
     isFormValid, displayNameValid, emailValid, passwordValid  
   } = useForm( formData, formValidations );
 
-  console.log( displayNameValid );
+  // console.log( displayNameValid );
 
   const onSubmit = ( event ) => {
     event.preventDefault();
+    setFormSubmitted( true );
     console.log( formState );
   }
 
@@ -35,6 +40,7 @@ export const RegisterPage = () => {
   return (
     
   <AuthLayout title='Crear cuenta'>
+    <h1>FormValid { isFormValid ? 'es Válido' : 'Incorrecto' }  </h1>
 
 <form onSubmit={ onSubmit } >
 
@@ -50,6 +56,8 @@ export const RegisterPage = () => {
     name='displayName'
     value={ displayName }
     onChange={ onInputChange }
+    error={ !!displayNameValid && formSubmitted}
+    helperText={ displayNameValid }
     
     />
 
@@ -65,6 +73,8 @@ export const RegisterPage = () => {
     name='email'
     value={ email }
     onChange={ onInputChange }
+    error={ !!emailValid && formSubmitted }
+    helperText={ emailValid }
     />
 
   </Grid>
@@ -80,6 +90,8 @@ export const RegisterPage = () => {
     name='password'
     value={ password }
     onChange={ onInputChange }
+    error={ !!passwordValid && formSubmitted }
+    helperText={ passwordValid }
     />
 
   </Grid>
