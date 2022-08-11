@@ -5,7 +5,7 @@ import { Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hooks/useForm';
 import { useDispatch } from 'react-redux';
-import { chekingAuthentication } from '../../store/auth/thunks';
+import { chekingAuthentication, startGoogleSignIn } from '../../store/auth/thunks';
 
 
 export const LoginPage = () => {
@@ -30,7 +30,8 @@ export const LoginPage = () => {
 
   const onGoogleSignIn = () => {
     console.log('onGoogleSignIn');
-    dispatch( chekingAuthentication( email, password  )  );
+    // dispatch( chekingAuthentication( email, password  )  );
+    dispatch( startGoogleSignIn() );
 
   }
 

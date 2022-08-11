@@ -1,9 +1,9 @@
-import { useDispatch } from "react-redux"
-import { chekingCredentials } from "./authSlice"
+import { signInWithGoogle } from "../../firebase/providers";
+import { chekingCredentials } from "./index";
+
 
 
 export const chekingAuthentication = ( email, password  ) => {
-
 
     return async( dispatch ) => {
         
@@ -17,6 +17,11 @@ export const startGoogleSignIn = () => {
     return async( dispatch  ) => {
 
         dispatch(  chekingCredentials() );
+
+        const result = await signInWithGoogle();
+        console.log({ result });
+        
+
     }
   
   }
