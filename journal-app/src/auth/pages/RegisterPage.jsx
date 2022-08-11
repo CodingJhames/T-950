@@ -1,17 +1,31 @@
 
-
-import { Google } from '@mui/icons-material';
+// import { Google } from '@mui/icons-material';
 import { Link as RouterLink } from 'react-router-dom';
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { AuthLayout } from '../layout/AuthLayout';
+import { useForm } from '../../hooks/useForm';
 
+const formData = {
+  email: 'james@google.com',
+  password: '123456',
+  displayName: 'Jhames Mejía'
+}
 
 export const RegisterPage = () => {
+
+  const { displayName, email, password, onInputChange, formState  } = useForm( formData );
+
+  const onSubmit = ( event ) => {
+    event.preventDefault();
+    console.log( formState );
+  }
+
+
   return (
     
   <AuthLayout title='Crear cuenta'>
 
-<form>
+<form onSubmit={ onSubmit } >
 
 <Grid container>
 
@@ -22,6 +36,10 @@ export const RegisterPage = () => {
     type='text' 
     placeholder='John Doe'
     fullWidth
+    name='displayName'
+    value={ displayName }
+    onChange={ onInputChange }
+    
     />
 
   </Grid>
@@ -33,6 +51,9 @@ export const RegisterPage = () => {
     type='email' 
     placeholder='correo@google.com'
     fullWidth
+    name='email'
+    value={ email }
+    onChange={ onInputChange }
     />
 
   </Grid>
@@ -45,6 +66,9 @@ export const RegisterPage = () => {
     type='password' 
     placeholder='Contraseña'
     fullWidth
+    name='password'
+    value={ password }
+    onChange={ onInputChange }
     />
 
   </Grid>
@@ -52,7 +76,10 @@ export const RegisterPage = () => {
   <Grid container spacing={ 2 } sx={{ mb: 2, mt: 1 }} >
     <Grid item xs={12} >
 
-      <Button variant='contained' fullWidth >Crear cuenta</Button>
+      <Button 
+      type='submit'
+      variant='contained' 
+      fullWidth >Crear cuenta</Button>
 
     </Grid>
 
