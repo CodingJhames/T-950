@@ -48,7 +48,6 @@ export const RegisterPage = () => {
 
   }
 
-
   return (
     
   <AuthLayout title='Crear cuenta'>
