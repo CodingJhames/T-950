@@ -7,25 +7,23 @@ import { setActiveNote } from "../../store/journal";
 
 
 
-export const SideBarItem = ({ title ='', body, id, imageUrls=[] }  ) => {
+export const SideBarItem = ({ title='',body, id, date, imageUrls=[] }  ) => {
 
+    const dispatch = useDispatch();
+
+    const onClickNote = () => {
+       dispatch( setActiveNote({  title,body,id,date,imageUrls })  );
+    }
+    
     const newTitle = useMemo(() =>{
         return title.length > 17
             ? title.substring(0,17) + '...'
             : title;
     }, [ title ])
 
-    const dispatch = useDispatch();
-
-
-    const onClicNewNote = () => {
-       dispatch( setActiveNote({ title , body, id, imageUrls   })  );
-    }
-
-
   return (
     <ListItem  disablePadding >
-        <ListItemButton onClick={onClicNewNote}>
+        <ListItemButton onClick={onClickNote}>
         <ListItemIcon>
             <TurnedInNot />
         </ListItemIcon>
