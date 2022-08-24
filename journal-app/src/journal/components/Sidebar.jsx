@@ -1,6 +1,7 @@
 import {  TurnedInNot } from "@mui/icons-material"
 import { Box, Divider, Drawer, Grid,List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material"
 import { useSelector } from "react-redux"
+import { SideBarItem } from "./SideBarItem";
 
 
 
@@ -8,7 +9,7 @@ import { useSelector } from "react-redux"
 export const Sidebar = ( { drawerWidth = 240 } ) => {
 
   const { displayName } = useSelector( state => state.auth  );
-
+  const { notes } = useSelector( state => state.journal  );
 
   return (
     
@@ -36,20 +37,22 @@ export const Sidebar = ( { drawerWidth = 240 } ) => {
 
           <List>
                 {
-                  ['Enero','Febrero','Marzo','Abril'].map(  text => (
-                    <ListItem key={ text } disablePadding >
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <TurnedInNot />
-                        </ListItemIcon>
+                  notes.map(  note => (
+                    // <ListItem key={ note.id } disablePadding >
+                    //   <ListItemButton>
+                    //     <ListItemIcon>
+                    //       <TurnedInNot />
+                    //     </ListItemIcon>
 
-                        <Grid container >
-                          <ListItemText primary={ text } />
-                          <ListItemText secondary={ 'Elit non fugiat eiusmod exercitation elit ut irure id qui magna est sunt tempor.' } />
-                        </Grid>
+                    //     <Grid container >
+                    //       <ListItemText primary={ note.title } />
+                    //       <ListItemText secondary={ 'Elit non fugiat eiusmod exercitation elit ut irure id qui magna est sunt tempor.' } />
+                    //     </Grid>
 
-                      </ListItemButton>
-                    </ListItem>
+                    //   </ListItemButton>
+                    // </ListItem>
+
+                    <SideBarItem key={ note.id } { ...note } />
                   ) )
                 }
             </List>
