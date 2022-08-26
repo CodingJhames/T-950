@@ -1,6 +1,7 @@
 import { async } from "@firebase/util";
 import { collection, doc, setDoc } from "firebase/firestore/lite";
 import { FirebaseDB } from "../../firebase/config";
+import { fileUpload } from "../../helpers/fileUpload";
 import { loadNotes } from "../../helpers/loadNotes";
 import { addNewEmptyNote, setActiveNote, savingNewNote, setNotes, setSaving, noteUpdated } from "./";
 
@@ -72,6 +73,18 @@ export const startSaveNote = () => {
 
     dispatch( noteUpdated( note ) );
 
-
     }
+}
+
+
+export const startUploadingFiles = ( files = []  ) => {
+
+    return async( dispatch ) => {
+        dispatch( setSaving() );
+
+        // console.log(files);
+        await fileUpload( files[0] );
+    }
+
+
 }

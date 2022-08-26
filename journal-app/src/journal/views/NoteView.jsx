@@ -1,4 +1,4 @@
-import { Save, SaveOutlined, UploadOutlined } from "@mui/icons-material"
+import { FileUploadOutlined, Save, SaveOutlined, UploadFileOutlined, UploadOutlined } from "@mui/icons-material"
 import { Button, Grid, IconButton, TextField, Typography } from "@mui/material"
 import { useRef } from "react"
 import { useEffect } from "react"
@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux"
 import Swal from "sweetalert2"
 import 'sweetalert2/dist/sweetalert2.css'
 import { useForm } from "../../hooks/useForm"
-import { setActiveNote, startSaveNote } from "../../store/journal"
+import { setActiveNote, startSaveNote, startUploadingFiles } from "../../store/journal"
 import { ImageGallery } from "../components/ImageGallery"
 
 
@@ -46,6 +46,7 @@ export const NoteView = () => {
 
         console.log('subiendo archivos');
         dispatch( startUploadingFiles(  target.files ) );
+        
     }
  
     const onSaveNote = () => {
@@ -74,7 +75,7 @@ export const NoteView = () => {
                 disabled={isSaving}
                 onClick={ () => fileInputRef.current.click() }
             >
-                <UploadOutlined />
+                < UploadOutlined />
             </IconButton>
 
 
