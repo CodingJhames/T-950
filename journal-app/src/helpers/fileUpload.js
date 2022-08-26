@@ -15,12 +15,12 @@ export const fileUpload = async( file ) => {
             body: formData
         });
 
-        console.log( resp );
+        // console.log( resp );
 
         if ( !resp.ok ) throw new Error('No se pudo subir Imagen');
 
         const cloudResp = await resp.json();
-        console.log( cloudResp );
+        // console.log( cloudResp );
         return cloudResp;
         
     } catch (error) {
