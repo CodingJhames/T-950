@@ -9,7 +9,7 @@ describe('Pruebas en Journal Thunks', () => {
     beforeEach( () => jest.clearAllMocks() );
 
 
-
+    // ! para este test se debe de hacer una configuración en Firebase
 
     test('startNewNote Debe de crear una nueva nota en blanco', async() => {
 

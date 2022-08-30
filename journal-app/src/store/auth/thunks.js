@@ -1,13 +1,11 @@
-import { async } from "@firebase/util";
+// import { async } from "@firebase/util"
 import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, signInWithGoogle } from "../../firebase/providers";
 import { clearNotesLogOut } from "../journal";
 import { logout, login } from "./index";
 import { checkingCredentials } from "./index";
 
 
-
-
-export const chekingAuthentication = ( email, password  ) => {
+export const checkingAuthentication = ( email, password  ) => {
 
     return async( dispatch ) => {
         
@@ -60,7 +58,7 @@ export const startLoginWithEmailPassword = ( {  email, password }  ) => {
         dispatch( checkingCredentials()  );
 
         const result = await loginWithEmailPassword( { email, password }  );
-        console.log(result);
+        // console.log(result);
 
         if( !result.ok ) return dispatch( logout( result ) );
 
