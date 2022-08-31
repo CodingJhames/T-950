@@ -3,8 +3,21 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore/lite';
+import { getEnvironments } from "../helpers/getEnvironments";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+
+const {
+  VITE_APIKEY,
+  VITE_AUTHDOMAIN,
+  VITE_PROJECTID,
+  VITE_STORAGEBUCKET,
+  VITE_MESSAGINGSENDERID,
+  VITE_APPID,
+} = getEnvironments();
+// console.log( env );
+
+
 
 // Your web app's Firebase configuration Dev/Prod
 // const firebaseConfig = {
@@ -18,16 +31,30 @@ import { getFirestore } from 'firebase/firestore/lite';
 
 // ? Testing
 
+// const firebaseConfig = {
+
+//   apiKey: "AIzaSyAWKzsIJs8iIa9NLGXpoTjp4x08e6mEhVw",
+//   authDomain: "react-test-3ac3a.firebaseapp.com",
+//   projectId: "react-test-3ac3a",
+//   storageBucket: "react-test-3ac3a.appspot.com",
+//   messagingSenderId: "295198373230",
+//   appId: "1:295198373230:web:0ba9b2e169a300c1c43d7f"
+
+// };
+
+
 const firebaseConfig = {
 
-  apiKey: "AIzaSyAWKzsIJs8iIa9NLGXpoTjp4x08e6mEhVw",
-  authDomain: "react-test-3ac3a.firebaseapp.com",
-  projectId: "react-test-3ac3a",
-  storageBucket: "react-test-3ac3a.appspot.com",
-  messagingSenderId: "295198373230",
-  appId: "1:295198373230:web:0ba9b2e169a300c1c43d7f"
+  apiKey: VITE_APIKEY,
+  authDomain:  VITE_AUTHDOMAIN,
+  projectId: VITE_PROJECTID,
+  storageBucket: VITE_STORAGEBUCKET,
+  messagingSenderId: VITE_MESSAGINGSENDERID,
+  appId: VITE_APPID,
 
 };
+
+console.log( firebaseConfig );
 
 
 // Initialize Firebase

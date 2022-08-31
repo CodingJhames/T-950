@@ -5,7 +5,7 @@ import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material'
 import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hooks/useForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { chekingAuthentication, startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth/thunks';
+import { checkingAuthentication, startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth/thunks';
 import { useMemo } from 'react';
 
   const formData = {
@@ -22,7 +22,7 @@ export const LoginPage = () => {
 
   const {email, password, onInputChange  } = useForm(formData);
 
-  const isAuthenticated = useMemo( () => status === 'cheking', [ status ]  );
+  const isAuthenticated = useMemo( () => status === 'checking', [ status ]  );
 
 
 
