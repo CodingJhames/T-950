@@ -5,6 +5,8 @@ import { addHours } from 'date-fns';
 import { NavBar, CalendarEvent } from '../';
 import { localizer, getMessagesES } from '../../helpers';
 import { useState } from 'react';
+import { CalendarModal } from '../';
+
 // import enUS from 'date-fns/locale/en-US';
 
 // import { NavBar } from "../";
@@ -96,6 +98,7 @@ export const CalendarPage = () => {
 
       />
 
+      < CalendarModal />
 
     </>
   )
