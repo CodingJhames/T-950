@@ -6,7 +6,7 @@ import { NavBar, CalendarEvent } from '../';
 import { localizer, getMessagesES } from '../../helpers';
 import { useState } from 'react';
 import { CalendarModal } from '../';
-import { useUiStore } from '../../hooks';
+import { useCalendarStore, useUiStore } from '../../hooks';
 
 // import enUS from 'date-fns/locale/en-US';
 
@@ -26,22 +26,23 @@ import { useUiStore } from '../../hooks';
 // })
 
 
-const events = [{
-  title: 'Cumple Parchita',
-  notes: 'comprar purina',
-  start: new Date(),
-  end: addHours( new Date(), 2  ),
-  bgColor: '#fafafa',
-  user: {
-    _id: '123',
-    name: 'Parchita'
-  }
-}];
+// const events = [{
+//   title: 'Cumple Parchita',
+//   notes: 'comprar purina',
+//   start: new Date(),
+//   end: addHours( new Date(), 2  ),
+//   bgColor: '#fafafa',
+//   user: {
+//     _id: '123',
+//     name: 'Parchita'
+//   }
+// }];
 
 export const CalendarPage = () => {
 
+  const { events } = useCalendarStore();
   const { openDateModal } = useUiStore();
-  
+
   const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'week');
   
 
@@ -85,7 +86,7 @@ export const CalendarPage = () => {
       <Calendar
         culture='es'
         localizer={localizer}
-        events={events}
+        events={ events }
         defaultView={ lastView }
         startAccessor="start"
         endAccessor="end"
