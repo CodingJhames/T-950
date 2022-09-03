@@ -1,11 +1,11 @@
 import { Calendar } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
-import { addHours } from 'date-fns';
+// import { addHours } from 'date-fns';
 import { NavBar, CalendarEvent } from '../';
 import { localizer, getMessagesES } from '../../helpers';
 import { useState } from 'react';
-import { CalendarModal } from '../';
+import { CalendarModal, FabAddNew } from '../';
 import { useCalendarStore, useUiStore } from '../../hooks';
 
 // import enUS from 'date-fns/locale/en-US';
@@ -105,7 +105,7 @@ export const CalendarPage = () => {
       />
 
       < CalendarModal />
-
+      < FabAddNew />
     </>
   )
 }
