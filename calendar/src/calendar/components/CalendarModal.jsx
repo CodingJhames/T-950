@@ -8,6 +8,7 @@ import { es } from 'date-fns/locale';
 import { differenceInSeconds, isValid } from 'date-fns';
 import Swal from 'sweetalert2';
 import  'sweetalert2/dist/sweetalert2.min.css';
+import { useUiStore } from '../../hooks';
 
 registerLocale('es', es );
 
@@ -28,7 +29,9 @@ Modal.setAppElement("#root");
 
 export const CalendarModal = () => {
 
-    const [isOpen, setIsOpen] = useState( true );
+    const { isDateModalOpen, closeDateModal } = useUiStore();
+
+    // const [isOpen, setIsOpen] = useState( true );
     const [formSubmitted, setFormSubmitted] = useState(false);
 
 
@@ -49,7 +52,8 @@ export const CalendarModal = () => {
 
     const onCloseModal = () => {
         console.log('modal cerrando');
-        setIsOpen( false );
+        closeDateModal();
+        // setIsOpen( false );
     }
 
     const onInputChange = ({target}) => {
@@ -91,8 +95,8 @@ export const CalendarModal = () => {
 
   return (
     <Modal
-    isOpen={ isOpen }
-        onRequestClose={onCloseModal}
+    isOpen={ isDateModalOpen }
+        onRequestClose={ onCloseModal }
         style={customStyles}
         className="modal" 
         overlayClassName="modal-fondo"
