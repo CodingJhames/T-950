@@ -13,7 +13,7 @@ router.post('/new', crearUsuario);
 
 router.post('/', loginUsuario );
 
-router.post('/renew', revalidarToken );
+router.get('/renew', revalidarToken );
 
 // router.post('/', (req, res )  => {
 
