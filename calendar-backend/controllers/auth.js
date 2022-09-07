@@ -3,10 +3,9 @@ const { validationResult } = require( 'express-validator');
 const User = require('../database/models/User');
 
 
-
 const crearUsuario = async(req, res = response )  => {
 
-    const{ name, email, password } = req.body;
+    const{ email, password } = req.body;
 
     //  manejo de errores
     // const errors = validationResult( req );
@@ -29,17 +28,31 @@ const crearUsuario = async(req, res = response )  => {
     // }
 
     try {
-        const user = new User( req.body );
+
+        let user = await User.findOne({ email });
+
+        // console.log(user);
+
+        if (user) {
+            return res.status(400).json({
+                ok:false,
+                ms:'Ya existe un usuario con ese email'
+            })
+        }
+
+        user = new User( req.body );
 
         await user.save();
 
         res.status(201).json({
             ok:true,
-            msg:'registro',
-            /* name,
+            uid: user.id,
+            name: user.name
+            /* 
             email,
             password */
-        })    
+        });
+            
     } catch (error) {
         console.log(error);
         res.status(500).json({
@@ -47,9 +60,6 @@ const crearUsuario = async(req, res = response )  => {
             msg:'Por favor comníquese con el Admin',
         })
     }
-
-
-    
 
 }
 
@@ -77,7 +87,6 @@ const loginUsuario = (req, res = response )  => {
 
 }
 
-
 const revalidarToken = (req, res = response )  => {
 
     res.json({
@@ -86,8 +95,6 @@ const revalidarToken = (req, res = response )  => {
     })
 
 }
-
-
 
 module.exports = {
     crearUsuario,
