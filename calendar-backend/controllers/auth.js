@@ -70,7 +70,7 @@ const crearUsuario = async(req, res = response )  => {
 }
 
 
-const loginUsuario = (req, res = response )  => {
+const loginUsuario = async(req, res = response )  => {
 
     const{ email, password } = req.body;
 
@@ -83,13 +83,45 @@ const loginUsuario = (req, res = response )  => {
     //     });
     // }
 
+    try {
 
-    res.status(201).json({
-        ok:true,
-        msg:'login',
-        email,
-        password
-    })
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({
+                ok:false,
+                ms:'El User no existe con ese email'
+            });
+        }
+
+        // confirmar los passwords
+        const validPassword = bcrypt.compareSync( password, user.password );
+
+        if ( !validPassword) {
+            return res.status(400).json({
+                ok:false,
+                msg: 'Password incorrecto'
+            });
+        }
+
+        // Generar neustro JWT
+
+        res.json({
+            ok:true,
+            uid: user.id,
+            name: user.name
+        })
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok:false,
+            msg:'Por favor comníquese con el Admin',
+        })
+    }
+
+
+    
 
 }
 
