@@ -2,6 +2,7 @@ const { response } = require('express');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require( 'express-validator');
 const User = require('../database/models/User');
+const { generateJWT } = require('../helpers/jwt');
 
 
 const crearUsuario = async(req, res = response )  => {
@@ -50,10 +51,14 @@ const crearUsuario = async(req, res = response )  => {
 
         await user.save();
 
+        // Generar JWT
+        const token = await generateJWT( user.id, user.name );
+
         res.status(201).json({
             ok:true,
             uid: user.id,
-            name: user.name
+            name: user.name,
+            token
             /* 
             email,
             password */
@@ -105,11 +110,13 @@ const loginUsuario = async(req, res = response )  => {
         }
 
         // Generar neustro JWT
+        const token = await generateJWT( user.id, user.name );
 
         res.json({
             ok:true,
             uid: user.id,
-            name: user.name
+            name: user.name,
+            token
         })
         
     } catch (error) {
