@@ -4,7 +4,7 @@ const router = Router();
 
 const { crearUsuario, loginUsuario, revalidarToken } = require('../controllers/auth');
 const { fileValidator } = require('../middlewares/file-validator');
-const { validateJWT } = require('../middlewares/validate-jsw');
+const { validateJWT } = require('../middlewares/validate-jwt');
 
 /* 
     Rutas de Usuarios / Auth
@@ -31,7 +31,7 @@ router.post(
     ],
     loginUsuario );
 
-router.get('/renew', validateJWT,revalidarToken );
+router.get('/renew', validateJWT, revalidarToken );
 
 // router.post('/', (req, res )  => {
 
