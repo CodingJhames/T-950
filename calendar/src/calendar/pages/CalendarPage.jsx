@@ -7,6 +7,7 @@ import { localizer, getMessagesES } from '../../helpers';
 import { useState } from 'react';
 import { CalendarModal, FabAddNew, FabDelete } from '../';
 import { useCalendarStore, useUiStore } from '../../hooks';
+import { useEffect } from 'react';
 
 // import enUS from 'date-fns/locale/en-US';
 
@@ -40,7 +41,7 @@ import { useCalendarStore, useUiStore } from '../../hooks';
 
 export const CalendarPage = () => {
 
-  const { events, setActiveEvent } = useCalendarStore();
+  const { events, setActiveEvent, startLoadingEvent } = useCalendarStore();
   const { openDateModal } = useUiStore();
 
   const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'week');
@@ -77,7 +78,10 @@ export const CalendarPage = () => {
     setLastView( event );
   };
 
-
+  useEffect(() => {
+    startLoadingEvent()
+  }, []);
+  
 
 
   return (
