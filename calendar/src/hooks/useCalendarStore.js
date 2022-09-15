@@ -1,5 +1,6 @@
 
 import { useDispatch, useSelector } from "react-redux"
+import Swal from "sweetalert2";
 import { calendarApi } from "../api";
 import { convertEventsToDateEvents } from "../helpers";
 import { onAddNewEvent, onDeleteEvent, onLoadEvents, onSetActiveEvent, onUpdateEvent } from "../store";
@@ -8,7 +9,6 @@ import { onAddNewEvent, onDeleteEvent, onLoadEvents, onSetActiveEvent, onUpdateE
 export const useCalendarStore = () => {
 
     const dispatch = useDispatch();
-
     const { events, activeEvent } = useSelector( state => state.calendar );
     const { user } = useSelector( state => state.auth );
 
@@ -21,16 +21,28 @@ export const useCalendarStore = () => {
 
         // ? TODO: Update Event
 
+        try {
+            if ( calendarEvent.id ) {
+                // ? actualizando
+                const { data } = await calendarApi.put( `/events/${calendarEvent.id}`, calendarEvent );
+                
+                dispatch( onUpdateEvent( {...calendarEvent, user } ) );
 
-        if ( calendarEvent._id ) {
-            // ? actualizando
-            dispatch( onUpdateEvent( {...calendarEvent} ) );
-        } else {
-            // ? Creando
-            const { data } = await calendarApi.post('/events', calendarEvent );
-            // console.log( {data} );
-            dispatch(  onAddNewEvent( {...calendarEvent, id: data.event.id, user }) );
+            } else {
+                // ? Creando
+                const { data } = await calendarApi.post('/events', calendarEvent );
+                // console.log( {data} );
+                dispatch(  onAddNewEvent( {...calendarEvent, id: data.event.id, user }) );
+            }
+
+        } catch (error) {
+            console.log(error);
+            Swal.fire( 'Error al guardar', error.response.data.msg, 'error' );
         }
+
+
+        
+        
 
     }
 
